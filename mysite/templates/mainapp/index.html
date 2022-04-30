@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Brain Potato</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -16,10 +16,10 @@
 </div>
 
 <div class="row" style="float: left; padding-left: 80px;">
-	<form action="/wordinput/" method="post">
+	<form action="/create_room" method="post">{% csrf_token %}
 		<div class="column" id="card-nova">
 			<h2>Anybody else yet?</h2>
-			<input id="name" type="text" name="name" value="{{ current_name }}">
+			<input id="name" type="text" name="name" value="Your username:{{ name }}">
 			<button type="submit" class="btn btn-success" id="button-nova" >Create a lobby</button>
 		</div>
 	</form>
