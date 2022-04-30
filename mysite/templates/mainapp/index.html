@@ -1,17 +1,33 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="style.css">
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>BrainPotato</h1>
-	<input type="text" placeholder="Name">
-	<div class="card" id="card-nova">
-		<h2>Anybody else yet?</h2>
-		<button type="button" id="button-nova">Create a lobby</button>
-	</div>
-	<div class="card" id="card-join">
-		<h2>Are your friends waiting you?</h2>
+
+<div class="jumbotron text-center">
+  <h1>Brain Potato</h1>
+  <p>Chaining words, unexpected relations potato fun! </p> 
+</div>
+
+<div class="row" style="float: left; padding-left: 80px;">
+	<form action="/wordinput/" method="post">
+		<div class="column" id="card-nova">
+			<h2>Anybody else yet?</h2>
+			<input id="name" type="text" name="name" value="{{ current_name }}">
+			<button type="submit" class="btn btn-success" id="button-nova" >Create a lobby</button>
+		</div>
+	</form>
+	<div class="column" id="card-join">
+		<h2>Join a Room!!</h2>
 		<input type="text" placeholder="#AFOI">
-		<button type="button" id="button-join">Join game</button>
+		<button type="button" class="btn btn-info" id="button-join">Join game</button>
 	</div>
-</body>
+</div>
+
+	  
