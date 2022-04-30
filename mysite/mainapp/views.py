@@ -47,7 +47,7 @@ def create_room(request):
 
                 #add first player
                 users ={"users":[request.POST.get('name')]}
-                users = str(users).replace("'",'"') #molt necessari omaigad
+                users = eval(str(users).replace("'",'"')) #molt necessari omaigad
                 room.users = str(users)
                 room.save()
                 
@@ -59,7 +59,8 @@ def create_room(request):
 
 def lobby(request):
     rumi = Room.objects.get(name = request.session['roomName'])
-    context= {'users': rumi.users}
+    context= eval(rumi.users)
+    print(context)
     return render(request, 'mainapp/lobby.html',context) 
 
 def join_room(request):
