@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<script >
+    <script>
 const responses=[]
 const maxResponses=4
 var sent=false
@@ -59,34 +59,20 @@ logInput.style.color="green"
 logInput.innerText="Successfully sent"
 const text=JSON.stringify({responses})
 // CANVIAR PER FER LA PETICIÓ
-const form = document.createElement('form');
-form.method = "post";
-form.action = "/game";
-document.body.appendChild(form);
-const formField = document.createElement('data');
-formField.type = 'hidden';
+fetch("{% url 'wordinput' %}",{method: 'POST',body : text})
+    .then(res=>console.log("hola"));
+
 form.appendChild(formField);
-
-var i = document.createElement("input");
-i.setAttribute('name', 'csrfmiddlewaretoken');
-i.setAttribute('value', '{{ csrf_token }}');
-form.appendChild(i);
 form.submit();
-
-let xhr = new XMLHttpRequest();
-xhr.open("POST", "/game");
-xhr.send(text);
-console.log(text)
-sent=true
 }
     </script>
 </head>
 <body>
 	<input type="text" id="paraula-input" placeholder="New word">
-	<button type="submit" class="btn btn-info" id="button-word" onclick="getName()">Send</button>
+	<button type="button" class="btn btn-info" id="button-word" onclick="getName()">Send</button>
 	<ul id="llista-paraules">
 	</ul>
-	<button type="submit" class="btn btn-info" id="button-submit" onclick="submitWords()">Submit words</button>
+	<button type="button" class="btn btn-info" id="button-submit" onclick="submitWords()">Submit words</button>
 	<p id="error-input"></p>
 </body>
 {% csrf_token %}

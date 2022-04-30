@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Room
 import json
 import random
+@csrf_exempt
 
 
 def index(request):
@@ -73,7 +74,9 @@ def join_room(request):
     else:
         return render(request,'mas/error.html')
 
+@csrf_exempt
 def wordinput(request):
+    print(request.body)
     return render(request,'mainapp/wordinput.html')
 
 @csrf_exempt
