@@ -1,19 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Brain Potato</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Brain Potato</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'index.css' %}"/>
 </head>
 <body>
 
-<div class="jumbotron text-center">
-  <h1>Brain Potato</h1>
-  <p>Chaining words, unexpected relations potato fun! </p> 
+<div class="jumbotron text-center" id="particles-js">
+    <h1>Brain Potato</h1>
+    <p>Chaining words, unexpected relations potato fun!</p>
 </div>
+<script src="{% static 'particles.js' %}"></script>
+<script src="{% static 'app.js' %}"></script>
 
 <div class="row" style="float: left; padding-left: 80px;">
 	<form action="/create_room" method="post">{% csrf_token %}
@@ -23,11 +27,14 @@
 			<button type="submit" class="btn btn-success" id="button-nova" >Create a lobby</button>
 		</div>
 	</form>
-	<div class="column" id="card-join">
-		<h2>Join a Room!!</h2>
-		<input type="text" placeholder="#AFOI">
-		<button type="button" class="btn btn-info" id="button-join">Join game</button>
-	</div>
+	<form action="/join_room" method="post">{% csrf_token %}
+		<div class="column" id="card-join">
+			<h2>Join a Room!!</h2>
+			<input id="username" type="text" name="username" value="Your username:{{ username }}">
+			<input type="text"  id="gameid" name="gameid" value="ID542{{ id }}">
+			<button  type="submit" class="btn btn-info" id="button-join">Join game</button>
+		</div>
+	</form>
 </div>
 
 	  
